@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuer Heritage · designed by Anter Bol</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Playfair Display & Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fcf9f2;
+      font-family: 'Inter', sans-serif;
+      color: #2d2a1e;
+      overflow-x: hidden;
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e3d9c9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #8b5a2b;
+      border-radius: 20px;
+      border: 3px solid #e3d9c9;
+    }
+
+    /* geometric pattern overlay */
+    .pattern-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(45deg, #d9c8b2 1px, transparent 1px),
+        linear-gradient(-45deg, #d9c8b2 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    /* earthy gradient background */
+    .earth-aura {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 80% 30%, #e6d7bd, #f5efe3 60%, #fcf9f2);
+      z-index: -3;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 2.5rem;
+      position: relative;
+    }
+
+    /* header with owner credit */
+    .owner-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding: 1.5rem 0;
+      border-bottom: 2px solid #b48b5a;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nuer-symbol {
+      font-size: 3rem;
+      line-height: 1;
+      background: #8b5a2b;
+      color: #f5e7d3;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50% 20% 50% 20%;
+      transform: rotate(5deg);
+      box-shadow: 8px 10px 0 #4f3a22;
+    }
+
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #4f2e1a;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .logo-text .sub {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #7a5f3e;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .designer-badge {
+      background: #2d2a1e;
+      padding: 0.7rem 2rem;
+      border-radius: 60px;
+      color: #f5e7d3;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 2px solid #b48b5a;
+      box-shadow: 0 8px 0 #4f3a22;
+    }
+
+    .designer-badge i {
+      color: #e9c48b;
+      font-size: 1.5rem;
+    }
+
+    /* hero section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin: 4rem 0 5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      animation: fadeSlide 1s ease-out;
+    }
+
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .hero-label {
+      display: inline-block;
+      background: #b48b5a;
+      color: #fcf3e4;
+      padding: 0.4rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-bottom: 1.8rem;
+      border: 1px solid #e9c48b;
+    }
+
+    .hero-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 900;
+      line-height: 1;
+      color: #3d2b14;
+    }
+
+    .hero-content h2 span {
+      color: #8b5a2b;
+      display: inline-block;
+      border-bottom: 6px double #b48b5a;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      color: #3f3527;
+      margin: 2rem 0 2.5rem;
+      max-width: 500px;
+      border-left: 5px solid #b48b5a;
+      padding-left: 1.8rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .stat {
+      font-family: 'Playfair Display', serif;
+    }
+    .stat-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #5a3f24;
+    }
+    .stat-label {
+      color: #7a5f3e;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+    }
+
+    .hero-gallery {
+      background: #ddd0bc;
+      border-radius: 30% 70% 40% 60% / 50% 40% 60% 50%;
+      padding: 1.5rem;
+      box-shadow: 30px 30px 30px -15px #ac9b84, inset -5px -5px 15px #ffffffa0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      animation: float 6s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-18px); }
+    }
+
+    .gallery-item {
+      width: 140px;
+      height: 140px;
+      background: #ad8b67;
+      border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f5e7d3;
+      font-size: 4rem;
+      border: 4px solid #f5e7d3;
+      box-shadow: 0 12px 20px -12px #2d2a1e;
+      transition: 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05) rotate(5deg);
+      background: #a47148;
+    }
+
+    /* featured section */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #3d2b14;
+      margin: 3rem 0 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #b48b5a, #e9c48b, #b48b5a);
+      border-radius: 10px;
+    }
+
+    .culture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .culture-card {
+      background: rgba(255, 245, 235, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 3rem 1rem 3rem 1rem;
+      padding: 2rem 1.5rem;
+      border: 2px solid #fff3e0;
+      box-shadow: 0 25px 30px -20px #5f4d37;
+      transition: all 0.25s;
+    }
+
+    .culture-card:hover {
+      transform: scale(1.02) rotate(-0.5deg);
+      background: #fff9f0;
+      border-color: #b48b5a;
+    }
+
+    .card-icon {
+      background: #b48b5a;
+      width: 70px;
+      height: 70px;
+      border-radius: 30% 70% 20% 80% / 50% 40% 60% 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #fcf3e4;
+      margin-bottom: 1.8rem;
+      border: 2px solid white;
+    }
+
+    .culture-card h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      color: #4f2e1a;
+    }
+
+    .culture-card p {
+      color: #3f3527;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .heritage-tag {
+      display: inline-block;
+      background: #fff0db;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      color: #8b5a2b;
+      font-weight: 600;
+      font-size: 0.8rem;
+      border: 1px solid #e9c48b;
+    }
+
+    /* interactive timeline */
+    .timeline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 3rem 0 5rem;
+      justify-content: center;
+    }
+
+    .timeline-milestone {
+      flex: 1 1 220px;
+      background: #ece2d3;
+      border-radius: 2rem;
+      padding: 2rem 1.2rem;
+      text-align: center;
+      border: 2px solid white;
+      box-shadow: 0 8px 0 #7f623e;
+      transition: 0.15s;
+      cursor: pointer;
+    }
+
+    .timeline-milestone:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 0 #7f623e;
+    }
+
+    .timeline-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #8b5a2b;
+      text-shadow: 2px 2px 0 #f5e7d3;
+    }
+
+    .timeline-milestone i {
+      font-size: 2rem;
+      color: #5a3f24;
+      margin: 0.5rem 0;
+    }
+
+    .timeline-milestone.active-timeline {
+      background: #dbb68c;
+      color: #2d2a1e;
+    }
+
+    /* interactive oral tradition section */
+    .oral-section {
+      background: #cbb295;
+      border-radius: 4rem 4rem 2rem 2rem;
+      padding: 3rem;
+      margin: 5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+      color: #221c12;
+      box-shadow: inset 0 -5px 0 #927249, 0 20px 30px -10px #7a603f;
+    }
+
+    .oral-left {
+      flex: 2 1 300px;
+    }
+
+    .oral-left i {
+      font-size: 5rem;
+      background: #4f3a22;
+      color: #ffebc7;
+      padding: 1rem;
+      border-radius: 60% 40% 50% 50%;
+    }
+
+    .oral-right {
+      flex: 3 1 400px;
+    }
+
+    .oral-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .play-button {
+      background: none;
+      border: 3px solid #4f2e1a;
+      color: #4f2e1a;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 1rem;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .play-button:hover {
+      background: #4f2e1a;
+      color: #ffeac2;
+    }
+
+    /* heritage map (visual interactive) */
+    .map-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0 4rem;
+      background: #e4d4bd;
+      border-radius: 5rem 5rem 3rem 3rem;
+      padding: 2.5rem;
+      border: 3px solid #f5e7d3;
+    }
+
+    .map-info {
+      flex: 1;
+    }
+
+    .map-info h4 {
+      font-size: 2.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .region-list {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .region-list li {
+      margin: 1rem 0;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .region-list i {
+      color: #8b5a2b;
+      font-size: 1.5rem;
+    }
+
+    .map-viz {
+      flex: 1;
+      background: #ad8b67;
+      border-radius: 40% 20% 40% 20%;
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      color: #ffefcf;
+      border: 8px solid #7f623e;
+    }
+
+    /* footer/credit */
+    .footer {
+      margin-top: 5rem;
+      border-top: 3px double #b48b5a;
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      color: #4a3f2e;
+    }
+
+    .footer-credit {
+      font-size: 1.2rem;
+    }
+
+    .footer-credit strong {
+      color: #8b5a2b;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .footer-social a {
+      color: #4f2e1a;
+      font-size: 2rem;
+      margin-left: 1.5rem;
+      transition: 0.2s;
+      display: inline-block;
+    }
+
+    .footer-social a:hover {
+      transform: scale(1.2);
+      color: #b48b5a;
+    }
+
+    /* interactive button / js effect */
+    .highlight {
+      background: #f7dbb2 !important;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-content h2 { font-size: 3.5rem; }
+      .owner-header { flex-direction: column; align-items: start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="earth-aura"></div>
+  <div class="pattern-bg"></div>
+
+  <div class="container">
+    <!-- header with designer credit -->
+    <div class="owner-header">
+      <div class="logo-area">
+        <div class="nuer-symbol">
+          <i class="fas fa-dharmachakra"></i>
+        </div>
+        <div class="logo-text">
+          <h1>NAATH · NUER</h1>
+          <div class="sub"><i class="fas fa-location-dot" style="color: #8b5a2b;"></i> heritage of the Nile</div>
+        </div>
+      </div>
+      <div class="designer-badge">
+        <i class="fas fa-feather"></i>
+        <span>Designed & curated by <strong>Anter Bol Gatluak</strong></span>
+        <i class="fas fa-feather"></i>
+      </div>
+    </div>
+
+    <!-- hero -->
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-label"><i class="fas fa-drum"></i> cieng · culture · continuity</div>
+        <h2>Journey through<br><span>Nuer</span> civilizations</h2>
+        <div class="hero-description">
+          Explore the spiritual traditions, oral histories, and resilience of the Nuer people — from the Sobat river to the world.
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">15+</span> <span class="stat-label">clans</span></div>
+          <div class="stat"><span class="stat-num">8</span> <span class="stat-label">dialects</span></div>
+          <div class="stat"><span class="stat-num">∞</span> <span class="stat-label">heritage</span></div>
+        </div>
+      </div>
+      <div class="hero-gallery" id="heroGallery">
+        <div class="gallery-item"><i class="fas fa-cow"></i></div>
+        <div class="gallery-item"><i class="fas fa-fire"></i></div>
+        <div class="gallery-item"><i class="fas fa-feather"></i></div>
+        <div class="gallery-item"><i class="fas fa-moon"></i></div>
+      </div>
+    </div>
+
+    <!-- culture grid (interactive) -->
+    <h2 class="section-title">፨ pillars of Nuer heritage</h2>
+    <div class="culture-grid">
+      <div class="culture-card" onclick="this.classList.toggle('highlight')">
+        <div class="card-icon"><i class="fas fa-hand-holding-heart"></i></div>
+        <h3>kinship</h3>
+        <p>Anter bol — the backbone of social structure, cattle-based lineages, and mutual respect.</p>
+        <span class="heritage-tag">family</span>
+      </div>
+      <div class="culture-card" onclick="this.classList.toggle('highlight')">
+        <div class="card-icon"><i class="fas fa-drum"></i></div>
+        <h3>rituals & songs</h3>
+        <p>Ceremonial music, bul drums, and age-set gatherings that connect generations.</p>
+        <span class="heritage-tag">oral tradition</span>
+      </div>
+      <div class="culture-card" onclick="this.classList.toggle('highlight')">
+        <div class="card-icon"><i class="fas fa-mask"></i></div>
+        <h3>spiritual beliefs</h3>
+        <p>Kuoth (God), reverence for ancestors, and the role of prophets like Ngundeng.</p>
+        <span class="heritage-tag">cosmology</span>
+      </div>
+      <div class="culture-card" onclick="this.classList.toggle('highlight')">
+        <div class="card-icon"><i class="fas fa-otter"></i></div>
+        <h3>cattle culture</h3>
+        <p>Sacred relationship with cattle — poetry, bride wealth, and survival.</p>
+        <span class="heritage-tag">economy</span>
+      </div>
+    </div>
+
+    <!-- interactive timeline (click changes) -->
+    <h2 class="section-title">historical memory</h2>
+    <div class="timeline" id="timelineContainer">
+      <div class="timeline-milestone" onclick="showTimelineMsg('1500s — Migration from Gezira')">
+        <div class="timeline-year">~1500</div>
+        <i class="fas fa-people-arrows"></i>
+        <p>Migration from the Gezira</p>
+      </div>
+      <div class="timeline-milestone" onclick="showTimelineMsg('1840s — First encounters with European traders')">
+        <div class="timeline-year">1840</div>
+        <i class="fas fa-ship"></i>
+        <p>European contact</p>
+      </div>
+      <div class="timeline-milestone" onclick="showTimelineMsg('1920s — Colonial period & resistance')">
+        <div class="timeline-year">1920</div>
+        <i class="fas fa-shield-halved"></i>
+        <p>resistance</p>
+      </div>
+      <div class="timeline-milestone" onclick="showTimelineMsg('1991 — Contemporary Nuer diaspora & revival')">
+        <div class="timeline-year">1991</div>
+        <i class="fas fa-globe"></i>
+        <p>diaspora</p>
+      </div>
+    </div>
+    <div id="timelineMessage" style="text-align:center; margin: 1rem 0; font-weight: 500; background:#ffe1b3; padding:0.8rem; border-radius:40px;">⏳ click any milestone to reveal history</div>
+
+    <!-- oral tradition interactive block -->
+    <div class="oral-section">
+      <div class="oral-left">
+        <i class="fas fa-head-side-vocal"></i>
+      </div>
+      <div class="oral-right">
+        <div class="oral-quote" id="oralPhrase">
+          “The words of the elders become the roots of children.”
+        </div>
+        <button class="play-button" id="oralBtn"><i class="fas fa-play"></i> hear a proverb</button>
+        <p style="margin-top: 1.5rem;"><i class="fas fa-circle-info"></i> click to cycle through Nuer oral wisdom</p>
+      </div>
+    </div>
+
+    <!-- heritage map interactive (symbolic) -->
+    <h2 class="section-title">፨ ancestral lands</h2>
+    <div class="map-container" id="mapBox" onclick="mapHighlight()">
+      <div class="map-info">
+        <h4>Greater Upper Nile</h4>
+        <ul class="region-list">
+          <li><i class="fas fa-water"></i> Bahr el Ghazal</li>
+          <li><i class="fas fa-mountain"></i> Jonglei</li>
+          <li><i class="fas fa-tree"></i> Unity State</li>
+          <li><i class="fas fa-river"></i> Sobat corridor</li>
+        </ul>
+        <p><i class="fas fa-hand-pointer"></i> click the map to highlight regions</p>
+      </div>
+      <div class="map-viz" id="mapViz">
+        <i class="fas fa-map"></i>
+      </div>
+    </div>
+
+    <!-- footer with strong owner signature -->
+    <div class="footer">
+      <div class="footer-credit">
+        <i class="fas fa-crown" style="color: #b48b5a;"></i> <strong>Anter Bol Gatluak</strong> · curator & designer · IT student preserving heritage through code.
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-behance"></i></a>
+        <a href="#"><i class="fas fa-globe"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- interactive JavaScript -->
+  <script>
+    // timeline message
+    function showTimelineMsg(msg) {
+      document.getElementById('timelineMessage').innerHTML = '📌 ' + msg;
+      // highlight clicked milestone
+      let milestones = document.querySelectorAll('.timeline-milestone');
+      milestones.forEach(m => m.classList.remove('active-timeline'));
+      event.currentTarget.classList.add('active-timeline');
+    }
+
+    // oral tradition cycle
+    const proverbs = [
+      '“A cow without a bell is lost.”',
+      '“The river is never in a hurry, yet it reaches the sea.”',
+      '“A child who asks questions does not get lost.”',
+      '“The strength of the pack is the elder, and the strength of the elder is the pack.”',
+      '“Rain does not fall on one roof alone.”'
+    ];
+    let proverbIndex = 0;
+    document.getElementById('oralBtn').addEventListener('click', function() {
+      proverbIndex = (proverbIndex + 1) % proverbs.length;
+      document.getElementById('oralPhrase').textContent = proverbs[proverbIndex];
+      // add sound effect simulation (visual)
+      this.innerHTML = '<i class="fas fa-volume-high"></i> spoken · proverb ' + (proverbIndex+1);
+    });
+
+    // map highlight effect
+    function mapHighlight() {
+      let mapViz = document.getElementById('mapViz');
+      mapViz.style.background = '#c9a77d';
+      mapViz.style.transition = '0.4s';
+      mapViz.innerHTML = '<i class="fas fa-check" style="font-size:5rem;"></i>';
+      setTimeout(() => {
+        mapViz.style.background = '#ad8b67';
+        mapViz.innerHTML = '<i class="fas fa-map"></i>';
+      }, 800);
+    }
+
+    // extra: hero gallery shuffle on click (just for delight)
+    document.getElementById('heroGallery').addEventListener('click', function(e) {
+      let icons = ['fa-cow','fa-feather','fa-drum','fa-moon','fa-star','fa-fish','fa-tree','fa-cloud-sun'];
+      let items = document.querySelectorAll('.gallery-item i');
+      items.forEach(item => {
+        let randomIcon = icons[Math.floor(Math.random() * icons.length)];
+        item.className = 'fas ' + randomIcon;
+      });
+    });
+
+    // also show designer message in console
+    console.log('✨ Nuer Heritage experience · crafted by Anter Bol Gatluak (IT student)');
+  </script>
+</body>
+</html>
